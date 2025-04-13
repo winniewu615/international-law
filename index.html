@@ -6,7 +6,7 @@
   <style>
     body { font-family: sans-serif; text-align: center; padding: 50px; }
     #word { font-size: 24px; margin-bottom: 20px; }
-    input, button { font-size: 18px; padding: 10px; }
+    input, button { font-size: 18px; padding: 10px; margin: 5px; }
     #result { margin-top: 20px; font-weight: bold; }
     #summary { margin-top: 30px; font-size: 16px; color: #555; }
   </style>
@@ -16,13 +16,14 @@
   <div id="word">請按下「開始」開始</div>
   <input type="text" id="answer" placeholder="輸入答案">
   <br><br>
-  <button onclick="nextWord()">開始 / 下一題</button>
+  <button onclick="submitAnswer()">送出</button>
+  <button onclick="skipWord()">跳過</button>
   <div id="result"></div>
   <div id="summary"></div>
 
   <script>
     const wordList = [
-      { en: "rule of courtesy", zh: "禮儀規範" },
+        { en: "rule of courtesy", zh: "禮儀規範" },
       { en: "vigor", zh: "力量" },
       { en: "self-help measures", zh: "自助手段" },
       { en: "retortion", zh: "報復" },
@@ -144,128 +145,6 @@
       { en: "statement of intents", zh: "意向聲明" },
       { en: "associate states", zh: "自治聯繫國" },
       { en: "self-governing territories", zh: "自治領土" },
-      { en: "Institute of International Law", zh: "國際法協會" },
-      { en: "League of Nations", zh: "國際聯盟" },
-      { en: "oral agreements", zh: "口頭協定" },
-      { en: "inter-States form", zh: "國家與國家間形式" },
-      { en: "Heads of form", zh: "國家元首間" },
-      { en: "inter-governmental form", zh: "政府間形式" },
-      { en: "exchange of notes", zh: "換文" },
-      { en: "Inter-ministers form", zh: "特定政府首長" },
-      { en: "inter-departmental form", zh: "部門或機構間" },
-      { en: "protocols", zh: "議定書" },
-      { en: "covenant", zh: "盟約" },
-      { en: "constituent instruments", zh: "基本組織文件" },
-      { en: "statute", zh: "規約" },
-      { en: "acts", zh: "文件" },
-      { en: "declaration", zh: "宣言" },
-      { en: "promulgation", zh: "聲明" },
-      { en: "memorandum of understanding", zh: "諒解備忘錄" },
-      { en: "joint communiqués", zh: "聯合公報" },
-      { en: "Final Act", zh: "最後文件" },
-      { en: "Modus Vivendi", zh: "權宜協定" },
-      { en: "temporary agreement", zh: "臨時協定" },
-      { en: "come into operation", zh: "進入運作" },
-      { en: "enter into force", zh: "生效" },
-      { en: "Final Provisions; Final Clauses", zh: "最後條款" },
-      { en: "authentic texts", zh: "作準文本" },
-      { en: "treaty-making capacity", zh: "締約能力" },
-      { en: "treaty-making authority", zh: "締約權限" },
-      { en: "implied treaty-making capacity", zh: "默示締約權" },
-      { en: "appropriate full powers", zh: "適當之全權證書" },
-      { en: "in written forms", zh: "作成文書" },
-      { en: "credentials", zh: "授權證書" },
-      { en: "official seals", zh: "正式官防公章" },
-      { en: "international entities", zh: "國際實體" },
-      { en: "additional protocols", zh: "附加議定書" },
-      { en: "Annex", zh: "附錄" },
-      { en: "text-cleaning", zh: "清稿" },
-      { en: "subsequent confirmation", zh: "事後確認" },
-      { en: "apparent authority", zh: "表見權限" },
-      { en: "adoption", zh: "議定" },
-      { en: "unanimity", zh: "全體一致決" },
-      { en: "consensus", zh: "協商一致決" },
-      { en: "cooling-off period", zh: "冷卻期" },
-      { en: "authentication of the text", zh: "約文認證" },
-      { en: "signing ad referendum", zh: "尚待核准簽署" },
-      { en: "initialing", zh: "草簽" },
-      { en: "signature", zh: "簽署" },
-      { en: "the signature of a witness", zh: "見證簽署" },
-      { en: "definite signature", zh: "最後簽署" },
-      { en: "testimonium", zh: "簽署空格" },
-      { en: "signature ad referendum", zh: "待准簽署" },
-      { en: "signatory", zh: "簽約國" },
-      { en: "contracting party", zh: "締約方" },
-      { en: "exchange of instruments constituting a treaty", zh: "交換構成條約文書" },
-      { en: "ratification", zh: "批准" },
-      { en: "consent and advice", zh: "同意與忠告" },
-      { en: "un-sign", zh: "撤簽" },
-      { en: "conditional/partial ratification", zh: "附條件/部分批准" },
-      { en: "tacit ratification", zh: "默示批准" },
-      { en: "period for ratification", zh: "批准期限" },
-      { en: "acceptance", zh: "接受" },
-      { en: "approval", zh: "贊同" },
-      { en: "accession", zh: "加入" },
-      { en: "letter/instrument of accession", zh: "加入書" },
-      { en: "all State formula", zh: "所有國家方案" },
-      { en: "Vienna formula", zh: "維也納方案" },
-      { en: "reservation", zh: "保留" },
-      { en: "derogations", zh: "除外" },
-      { en: "withdrawal of reservations", zh: "保留之撤回" },
-      { en: "declarations", zh: "聲明" },
-      { en: "optional/mandatory declarations", zh: "任擇性/強制性聲明" },
-      { en: "depositary", zh: "保存機關" },
-      { en: "ex officio registration", zh: "依職權予以登記" },
-      { en: "the certifying statement", zh: "核證說明" },
-      { en: "to be published in extenso", zh: "全文公布" },
-      { en: "in good faith", zh: "善意" },
-      { en: "not unduly delayed", zh: "不稽延過久" },
-      { en: "refrain", zh: "不得" },
-      { en: "defeat", zh: "妨礙" },
-      { en: "Preparatory Conference/Commission", zh: "籌備會議/委員會" },
-      { en: "successive treaties", zh: "先後條約" },
-      { en: "the date of adoption", zh: "通過日期" },
-      { en: "the date of entry into force", zh: "生效日期" },
-      { en: "the territorial integrity and political independence", zh: "領土完整與政治獨立" },
-      { en: "doctrinal/official interpretation", zh: "學理/官方解釋" },
-      { en: "(non)authentic interpretation", zh: "有權/非有權解釋" },
-      { en: "Procès-verbal", zh: "外交照會" },
-      { en: "rules of interpretation", zh: "解釋規則" },
-      { en: "grammatical interpretation", zh: "文義解釋" },
-      { en: "general rule of interpretation", zh: "解釋一般原則" },
-      { en: "the principle of effectiveness", zh: "有效性原則" },
-      { en: "appropriate effects", zh: "適當的效力" },
-      { en: "general and ordinary meaning", zh: "通常意義" },
-      { en: "explanatory reports", zh: "解釋報告" },
-      { en: "official commentaries", zh: "官方註解" },
-      { en: "travaux", zh: "準備工作" },
-      { en: "authenticity", zh: "真實性" },
-      { en: "completeness", zh: "完整性" },
-      { en: "availability", zh: "方便取得" },
-      { en: "a contrario", zh: "反面解釋" },
-      { en: "acquiescence", zh: "默認" },
-      { en: "contra proferentem", zh: "有利對造解釋" },
-      { en: "ejusdem generic", zh: "類同解釋" },
-      { en: "Expressio unius est exclusio alterius", zh: "明文規定排除其他" },
-      { en: "Lex posterior derogate legi priori", zh: "後法優於前法" },
-      { en: "Lex specialis derogat legi generali", zh: "特別法優於普通法" },
-      { en: "the principle of dubio mitius; in dubio pro libertate", zh: "遇有疑義,從輕解釋" },
-      { en: "revision", zh: "修訂" },
-      { en: "amendment", zh: "修正" },
-      { en: "modification", zh: "修改" },
-      { en: "invalidity", zh: "失效" },
-      { en: "termination", zh: "終止" },
-      { en: "suspension", zh: "停止施行" },
-      { en: "a material breach", zh: "重大違約情事" },
-      { en: "fundamental change of circumstances", zh: "情勢之基本改變" },
-      { en: "equity and justice", zh: "公理與正義" },
-      { en: "municipal law", zh: "內國法" },
-      { en: "int. tribunals", zh: "國際間法院" },
-      { en: "Dualism/Monism", zh: "二元論/一元論" },
-      { en: "int. law proper", zh: "國際法本體" },
-      { en: "act of State doctrine", zh: "國家行為主義" },
-      { en: "int. claim", zh: "國際索賠" },
-      { en: "amicus curiae", zh: "法庭之友" },
       { en: "pre-independent territorial entities", zh: "獨立前領土實體" },
       { en: "subject of int. law", zh: "國際法主體" },
       { en: "int. personality", zh: "國際法人格" },
@@ -353,12 +232,18 @@
     const wrongWordsSet = new Set();
 
     function nextWord() {
+      if (wordList.length === 0) return;
       const remaining = wordList.filter(word => word !== currentWord);
       const randomIndex = Math.floor(Math.random() * remaining.length);
       currentWord = remaining[randomIndex];
       currentDirection = Math.random() < 0.5 ? 'enToZh' : 'zhToEn';
       document.getElementById("answer").value = "";
       document.getElementById("result").textContent = "";
+
+      if (!currentWord || !currentWord.en || !currentWord.zh) {
+        document.getElementById("word").textContent = "⚠️ 題庫資料錯誤";
+        return;
+      }
 
       if (currentDirection === 'enToZh') {
         document.getElementById("word").textContent = currentWord.en;
@@ -369,13 +254,8 @@
       document.getElementById("answer").focus();
     }
 
-    document.getElementById("answer").addEventListener("keypress", function(event) {
-      if (event.key === "Enter") {
-        checkAnswer();
-      }
-    });
-
-    function checkAnswer() {
+    function submitAnswer() {
+      if (!currentWord) return;
       const userAnswer = document.getElementById("answer").value.trim();
       const correctAnswer = currentDirection === 'enToZh' ? currentWord.zh : currentWord.en;
 
@@ -383,7 +263,6 @@
         document.getElementById("result").textContent = "✅ 答對了！";
         document.getElementById("result").style.color = "green";
         correctWords.push(currentWord);
-        // 如果之前錯過這題，從錯題中移除
         const index = wrongWords.findIndex(w => w.en === currentWord.en && w.zh === currentWord.zh);
         if (index !== -1) {
           wrongWords.splice(index, 1);
@@ -393,13 +272,19 @@
         document.getElementById("result").textContent = `❌ 錯了！正確答案是：${correctAnswer}`;
         document.getElementById("result").style.color = "red";
         if (!wrongWordsSet.has(currentWord)) {
-        wrongWords.push(currentWord);
-        wrongWordsSet.add(currentWord);
-      }
+          wrongWords.push(currentWord);
+          wrongWordsSet.add(currentWord);
+        }
       }
 
       updateSummary();
       setTimeout(nextWord, 1500);
+    }
+
+    function skipWord() {
+      document.getElementById("result").textContent = "➡️ 已跳過本題，不計分。";
+      document.getElementById("result").style.color = "gray";
+      setTimeout(nextWord, 1000);
     }
 
     function updateSummary() {
@@ -413,6 +298,15 @@
       }
       document.getElementById("summary").innerHTML = html;
     }
+
+    document.getElementById("answer").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        submitAnswer();
+      }
+    });
+
+    // 初始第一題
+    nextWord();
   </script>
 </body>
 </html>
