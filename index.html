@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <title>國際法單字抽考小程式</title>
+  <title>國際法單字</title>
   <style>
     body { font-family: sans-serif; text-align: center; padding: 50px; }
     #word { font-size: 24px; margin-bottom: 20px; }
@@ -12,8 +12,8 @@
   </style>
 </head>
 <body>
-  <h1>國際公法單字抽考 🔥</h1>
-  <div id="word">請按下「開始」開始</div>
+  <h1>國際公法單字 💣</h1>
+  <div id="word">請自由開始</div>
   <input type="text" id="answer" placeholder="輸入答案">
   <br><br>
   <button onclick="submitAnswer()">送出</button>
@@ -147,7 +147,7 @@
       { en: "self-governing territories", zh: "自治領土" },
       { en: "pre-independent territorial entities", zh: "獨立前領土實體" },
       { en: "subject of int. law", zh: "國際法主體" },
-      { en: "int. personality", zh: "國際法人格" },
+      { en: "international personality", zh: "國際法人格" },
       { en: "legal personality", zh: "法律人格" },
       { en: "statehood", zh: "國家屬性" },
       { en: "a defined territory", zh: "特定領土" },
@@ -156,9 +156,9 @@
       { en: "democratic legitimacy", zh: "民主正當性" },
       { en: "Principality of Monaco", zh: "摩納哥侯國" },
       { en: "Vatican City", zh: "梵蒂岡" },
-      { en: "R.o. Nauru", zh: "諾魯共同國" },
+      { en: "R.O. Nauru", zh: "諾魯共同國" },
       { en: "Principality of Leichtenstein", zh: "列支敦斯敦侯國" },
-      { en: "R.o. San Marino", zh: "聖馬利諾共和國" },
+      { en: "R.O. San Marino", zh: "聖馬利諾共和國" },
       { en: "government-in-exile", zh: "流亡政府" },
       { en: "non-sovereign States", zh: "非獨立國家" },
       { en: "dissolution", zh: "解體" },
@@ -191,7 +191,7 @@
       { en: "transnational corporation", zh: "跨國公司" },
       { en: "popular sovereignty", zh: "人民主權" },
       { en: "de facto territorial regime", zh: "事實領土當局" },
-      { en: "Int. Commission of Red Cross", zh: "國際紅十字委員會" },
+      { en: "International Commission of Red Cross", zh: "國際紅十字委員會" },
       { en: "the constitutive theory", zh: "構成說" },
       { en: "the declaratory theory", zh: "宣告說" },
       { en: "Statehood", zh: "國家資格" },
@@ -282,7 +282,7 @@
     }
 
     function skipWord() {
-      document.getElementById("result").textContent = "➡️ 已跳過本題，不計分。";
+      document.getElementById("result").textContent = "還敢跳過";
       document.getElementById("result").style.color = "gray";
       setTimeout(nextWord, 1000);
     }
